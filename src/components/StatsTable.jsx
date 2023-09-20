@@ -1,6 +1,26 @@
-import {v4 as uuid} from 'uuid';
+import { v4 as uuid } from 'uuid';
 
 export default function StatsTable({ stats }) {
+  const avg = Object.keys(stats).reduce(
+    ({ wait, response, complete }, key) => {
+      return {
+        wait: wait + stats[key].wait,
+        response: response + stats[key].response,
+        complete: complete + stats[key].complete,
+      };
+    },
+    { wait: 0, response: 0, complete: 0 }
+  );
+  if (Object.keys(stats).length > 0) {
+    const len = Object.keys(stats).length;
+    avg.wait /= len;
+    avg.response /= len;
+    avg.complete /= len;
+  } else {
+    avg.wait = 0;
+    avg.response = 0;
+    avg.complete = 0;
+  }
   return (
     <table>
       <thead>
@@ -25,6 +45,12 @@ export default function StatsTable({ stats }) {
               </tr>
             );
           })}
+        <tr className="average">
+          <td>Average</td>
+          <td>{avg.response}</td>
+          <td>{avg.wait}</td>
+          <td>{avg.complete}</td>
+        </tr>
       </tbody>
     </table>
   );
