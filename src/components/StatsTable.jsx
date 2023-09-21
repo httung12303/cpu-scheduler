@@ -47,9 +47,9 @@ export default function StatsTable({ stats }) {
           })}
         <tr className="average">
           <td>Average</td>
-          <td>{avg.response}</td>
-          <td>{avg.wait}</td>
-          <td>{avg.complete}</td>
+          <td>{avg.response.toFixed(2)}</td>
+          <td>{avg.wait.toFixed(2)}</td>
+          <td>{avg.complete.toFixed(2)}</td>
         </tr>
       </tbody>
     </table>
