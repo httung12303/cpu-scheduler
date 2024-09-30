@@ -1,0 +1,3 @@
+MY_OPENAI_KEY=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
+MONGO_CONNECTION_STRING="mongodb+srv://user1:1@cluster0.shu02.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+PORT=1204
